@@ -1,4 +1,6 @@
 from phone_service import Phon_Service
+from Phon_repostory import Phone_reposetory
+
 
 def show_menu():
     print("1. 메뉴")
@@ -12,6 +14,8 @@ def show_menu():
     
     
 def main():
+    reposetory = Phone_reposetory()
+    reposetory.load()
     service = Phon_Service()
     while True:
         show_menu()
@@ -32,6 +36,7 @@ def main():
                 service.remv()
             elif menu_1 == 0:
                 print("프로그램 종료")
+                reposetory.load()
                 break
             elif menu_1 ==5:
                 service.show_all()

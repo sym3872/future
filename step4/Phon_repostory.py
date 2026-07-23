@@ -2,13 +2,11 @@ import csv
 
 
 class Phone_reposetory:
-    def asdad(self):
-        with open("students.csv", "w", encoding="utf-8", newline="") as file:
-         writer = csv.writer(file)
+    def __init__(self):
+        pass
 
-        writer.writerow(["name", "score"])
-        writer.writerow(["민수", 90])
-        writer.writerow(["지훈", 80])
-        writer.writerow(["서준", 95])
+    def save(self):
+        print("파일저장 완료")
 
-print("CSV 파일 저장 완료")
+    def load(self):
+        print("파일로드 경로")
