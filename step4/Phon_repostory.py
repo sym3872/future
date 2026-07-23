@@ -6,15 +6,13 @@ class PhoneBookRepository:
     def __init__(self, file_name="phone_book.csv"):
         self.file_name = file_name
 
-    # 💾 1. 데이터 저장 (Save)
+
     def save(self, data_list):
         with open(self.file_name, "w", encoding="utf-8", newline="") as file:
             writer = csv.writer(file)
-            # 데이터 분석 및 역조립을 위해 분류(group)와 추가정보(memo) 컬럼을 설계합니다.
             writer.writerow(["name", "phone", "birth", "region", "group", "memo"])
             
             for info in data_list:
-                # 💡 객체의 실제 타입을 검사하여 CSV 파일에 적힐 값들을 분기합니다.
                 if isinstance(info, phoneunlvInfo):
                     group = "대학"
                     memo = info.major
@@ -28,7 +26,6 @@ class PhoneBookRepository:
                 writer.writerow([info.name, info.phone_number, info.birth, info.region, group, memo]) # type: ignore
         print(f"💾 [{self.file_name}] 파일에 데이터가 안전하게 백업되었습니다.")
 
-    # 📂 2. 데이터 불러오기 및 복원 (Load)
     def load(self):
         loaded_data = []
         if not os.path.exists(self.file_name):
