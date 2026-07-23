@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 PhoneInfo.py)",
+      "Bash(python PhoneInfo.py)",
+      "Bash(python main.py)",
+      "Bash(python3 main.py)"
+    ]
+  }
+}
