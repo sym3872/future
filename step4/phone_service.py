@@ -46,7 +46,6 @@ class Phon_Service:
                 print("ㄴㄴㄴ")
     def fix(self):
         name = input("수정할 이름:") # type: ignore
-
         for i in self.info_sto: # type: ignore
             if name == i.name: # type: ignore
                 print("있는 이름입니다. 수정하시겠습니까?")
@@ -54,18 +53,22 @@ class Phon_Service:
                 if an == 'Y' or 'y' or "예":
                     self.info_sto.remove() # type: ignore
                     print("수정할 내용 입력")
-                    name = input("이름: ")
                     phone_number = input('전번: ') # type: ignore
                     brith = input('생일: ') # type: ignore
                     rejon = input('지역: ') # type: ignore
-
-                    self.info_sto.append(PhoneInfo(name, phone_number, brith,rejon)) # type: ignore
-                    print("추가 완료")
-                else:
+                if isinstance(i,phoneunlvInfo):
+                    major = input()
+                    self.info_sto.append(PhoneInfo(name, phone_number,major, brith,rejon)) # type: ignore
                     break
-                
-            else:
-                continue
+                elif isinstance(i,PhonecommpanyInfo):
+                    commpany = input()
+                    self.info_sto.append(PhoneInfo(name, phone_number,commpany, brith,rejon)) # type: ignore
+                    break
+                else:
+                    self.info_sto.append(PhoneInfo(name, phone_number, brith,rejon)) # type: ignore
+                    break
+            print("추가 완료")
+
 
     def remv(self):
         name = input("삭제할 이름:") # type: ignore

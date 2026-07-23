@@ -13,7 +13,6 @@ def show_menu():
     
 def main():
     service = Phon_Service()
-    service2 = Phon_Service()
     while True:
         show_menu()
         try:
