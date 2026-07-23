@@ -1,6 +1,7 @@
 import csv
 import os
 from Phone_Info import PhoneInfo, phoneunlvInfo, PhonecommpanyInfo
+from phone_service import Phon_Service
 
 class PhoneBookRepository:
     def __init__(self, file_name="phone_book.csv"):
@@ -21,28 +22,29 @@ class PhoneBookRepository:
                     memo = info.commpany
                 else:
                     group = "일반"
-                    memo = ""  # 일반 친구는 추가 정보가 없음
+                    memo = ""  
                 
-                writer.writerow([info.name, info.phone_number, info.birth, info.region, group, memo]) # type: ignore
-        print(f"💾 [{self.file_name}] 파일에 데이터가 안전하게 백업되었습니다.")
+                writer.writerow([info.name, info.phone_number, info.brith, info.rejon, group, memo]) 
+        print(f" [{self.file_name}] 파일에 데이터가 안전하게 백업되었습니다.")
 
     def load(self):
         loaded_data = []
         if not os.path.exists(self.file_name):
-            return loaded_data  # 파일이 없으면 빈 리스트 리턴 (최초 실행 대비)
+            return loaded_data  
             
         with open(self.file_name, "r", encoding="utf-8") as file:
             reader = csv.reader(file)
             next(reader)  # 헤더(첫 행) 건너뛰기
             
             for row in reader:
+                if not row:
+                    continue
                 name, num, birth, region, group, memo = row
                 
-                # 파일의 빈 문자열("") 데이터를 파이썬의 None 객체로 원래대로 복원
+                
                 birth = birth if birth != "" else None
                 region = region if region != "" else None
                 
-                # 💡 파일에 기록된 'group' 텍스트를 보고 알맞은 자식 클래스의 객체로 부활시킵니다!
                 if group == "대학":
                     info = phoneunlvInfo(name, num, major=memo, birth=birth, region=region) # type: ignore
                 elif group == "회사":

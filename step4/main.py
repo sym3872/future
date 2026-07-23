@@ -2,6 +2,7 @@ from phone_service import Phon_Service
 from Phon_repostory import PhoneBookRepository
 
 
+
 def show_menu():
     print("1. 메뉴")
     print("2. 데이터 조회")
@@ -36,7 +37,7 @@ def main():
                 service.remv()
             elif menu_1 == 0:
                 print("프로그램 종료")
-                reposetory.load()
+                reposetory.save(service.info_sto)
                 break
             elif menu_1 ==5:
                 service.show_all()
