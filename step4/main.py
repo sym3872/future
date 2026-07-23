@@ -1,5 +1,5 @@
 from phone_service import Phon_Service
-from Phon_repostory import Phone_reposetory
+from Phon_repostory import PhoneBookRepository
 
 
 def show_menu():
@@ -14,7 +14,7 @@ def show_menu():
     
     
 def main():
-    reposetory = Phone_reposetory()
+    reposetory = PhoneBookRepository()
     reposetory.load()
     service = Phon_Service()
     while True:
