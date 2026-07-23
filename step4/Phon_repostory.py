@@ -11,7 +11,7 @@ class PhoneBookRepository:
     def save(self, data_list):
         with open(self.file_name, "w", encoding="utf-8", newline="") as file:
             writer = csv.writer(file)
-            writer.writerow(["name", "phones", "birth", "region", "group", "memo"])
+            writer.writerow(["name", "phone", "birth", "region", "group", "memo"])
             
             for info in data_list:
                 if isinstance(info, phoneunlvInfo):
